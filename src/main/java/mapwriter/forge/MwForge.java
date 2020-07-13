@@ -2,6 +2,8 @@ package mapwriter.forge;
 
 import java.net.InetSocketAddress;
 
+import net.minecraft.world.World;
+import net.minecraftforge.event.world.WorldEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -64,14 +66,21 @@ public class MwForge {
     	}
     }
 
+//    @SubscribeEvent
+//    public void onTick(TickEvent.ClientTickEvent event){
+//        if (event.phase == TickEvent.Phase.START){
+//        	// run the cleanup code when Mw is loaded and the player becomes null.
+//        	// a bit hacky, but simpler than checking if the connection has closed.
+//            if ((Mw.instance.ready) && (Minecraft.getMinecraft().thePlayer == null)) {
+//                Mw.instance.close();
+//            }
+//        }
+//    }
+
     @SubscribeEvent
-    public void onTick(TickEvent.ClientTickEvent event){
-        if (event.phase == TickEvent.Phase.START){
-        	// run the cleanup code when Mw is loaded and the player becomes null.
-        	// a bit hacky, but simpler than checking if the connection has closed.
-            if ((Mw.instance.ready) && (Minecraft.getMinecraft().thePlayer == null)) {
-                Mw.instance.close();
-            }
+    public void onWorldUnload(WorldEvent.Unload event) {
+        if (Mw.instance.ready) {
+            Mw.instance.close();
         }
     }
 }
