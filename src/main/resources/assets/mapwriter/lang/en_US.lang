@@ -92,6 +92,7 @@ mw.gui.mwguioptionslot.mapPixelSnapping.enabled=enabled
 mw.gui.mwguioptionslot.mapPixelSnapping.disabled=disabled
 mw.gui.mwguioptionslot.maxDeathMarkers=Max death markers: %s
 mw.gui.mwguioptionslot.backgroundMode=Background mode: %s
+mw.gui.mwguioptionslot.backgroundMode.minecraft=minecraft
 mw.gui.mwguioptionslot.backgroundMode.none=none
 mw.gui.mwguioptionslot.backgroundMode.static=static
 mw.gui.mwguioptionslot.backgroundMode.panning=panning

@@ -92,6 +92,7 @@ mw.gui.mwguioptionslot.mapPixelSnapping.enabled=вкл.
 mw.gui.mwguioptionslot.mapPixelSnapping.disabled=выкл.
 mw.gui.mwguioptionslot.maxDeathMarkers=Макс. маркеров смерти: %s
 mw.gui.mwguioptionslot.backgroundMode=Фоновый режим: %s
+mw.gui.mwguioptionslot.backgroundMode.minecraft=майнкрафт
 mw.gui.mwguioptionslot.backgroundMode.none=нет
 mw.gui.mwguioptionslot.backgroundMode.static=статический
 mw.gui.mwguioptionslot.backgroundMode.panning=панорамирование
