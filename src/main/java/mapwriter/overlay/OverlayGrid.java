@@ -14,6 +14,7 @@ public class OverlayGrid implements IMwDataProvider {
 	public class ChunkOverlay implements IMwChunkOverlay{
 
 		Point coord;
+		float borderWidth = 0.5f;
 		
 		public ChunkOverlay(int x, int z){
 			this.coord = new Point(x, z);
@@ -32,10 +33,10 @@ public class OverlayGrid implements IMwDataProvider {
 		public boolean hasBorder() { return true; }
 
 		@Override
-		public float getBorderWidth() { return 0.5f; }
+		public float getBorderWidth() { return borderWidth; }
 
 		@Override
-		public int getBorderColor() { return 0xff000000; }
+		public int getBorderColor() { return 0x6021140e; } // 0xff000000
 		
 	}
 	
@@ -77,7 +78,7 @@ public class OverlayGrid implements IMwDataProvider {
 
 	@Override
 	public void onZoomChanged(int level, MapView mapview) {
-		
+
 	}
 
 	@Override
