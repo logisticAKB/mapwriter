@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class MwGui extends GuiScreen {
 	private Mw mw;
     private MapMode mapMode;
-    private MapView mapView;
+    public MapView mapView;
     private MapRenderer map;
     
 	private final static double PAN_FACTOR = 0.3D;
@@ -50,6 +50,8 @@ public class MwGui extends GuiScreen {
     private int mouseBlockY = 0;
     private int mouseBlockZ = 0;
 
+    public boolean backFromMarkerSearch = false;
+
     private int exit = 0;
     
     private Label helpLabel;
@@ -57,6 +59,9 @@ public class MwGui extends GuiScreen {
     private Label dimensionLabel;
     private Label groupLabel;
     private Label overlayLabel;
+    private Label markersLabel;
+
+    private GuiButton optionsButton;
     
     class Label {
     	int x = 0, y = 0, w = 1, h = 12;
@@ -95,6 +100,7 @@ public class MwGui extends GuiScreen {
     	this.dimensionLabel = new Label();
     	this.groupLabel = new Label();
     	this.overlayLabel = new Label();
+    	this.markersLabel = new Label();
     }
 
     public MwGui(Mw mw, int dim, int x, int z){
@@ -107,6 +113,7 @@ public class MwGui extends GuiScreen {
     // called when gui is displayed and every time the screen
     // is resized
     public void initGui() {
+//    	this.buttonList.add(this.optionsButton = new MwGuiButton(0, this.width - 25, this.height / 2 - 20));
     }
 
     // called when a button is pressed
@@ -344,12 +351,19 @@ public class MwGui extends GuiScreen {
         			)
         		);
     		} else if (this.optionsLabel.posWithin(x, y)) {
-    			this.mc.displayGuiScreen(new MwGuiOptions(this, this.mw));
+				this.mc.displayGuiScreen(new MwGuiOptions(this, this.mw));
+			} else if (this.markersLabel.posWithin(x, y)) {
+    			this.mc.displayGuiScreen(new MwGuiMarkerSearch(this, this.mw));
     		} else {
 	    		this.mouseLeftHeld = 1;
 	    		this.mouseLeftDragStartX = x;
 	    		this.mouseLeftDragStartY = y;
-	    		this.mw.markerManager.selectedMarker = marker;
+
+	    		if (!backFromMarkerSearch) {
+					this.mw.markerManager.selectedMarker = marker;
+				} else {
+	    			backFromMarkerSearch = false;
+				}
 	    		
 	    		if ((marker != null) && (prevMarker == marker)) {
 	    			// clicked previously selected marker.
@@ -644,7 +658,8 @@ public class MwGui extends GuiScreen {
        this.groupLabel.drawToRightOf(this.dimensionLabel, groupString);
        String overlayString = String.format("[" + I18n.format("mw.gui.mwgui.overlay", MwAPI.getCurrentProviderName()) + "]");
        this.overlayLabel.drawToRightOf(this.groupLabel, overlayString);
-        
+       this.markersLabel.drawToRightOf(this.overlayLabel, "[" + I18n.format("mw.gui.mwgui.markers") + "]");
+
         // help message on mouse over
 		if (this.helpLabel.posWithin(mouseX, mouseY)) {
 		    this.drawHelp();

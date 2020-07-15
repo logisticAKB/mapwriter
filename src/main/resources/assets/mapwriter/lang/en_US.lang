@@ -14,6 +14,7 @@ mw.gui.mwgui.options=Options
 mw.gui.mwgui.dimension=dimension: %d
 mw.gui.mwgui.group=group
 mw.gui.mwgui.overlay=overlay: %s
+mw.gui.mwgui.markers=Markers
 mw.gui.mwgui.keys=Keys
 mw.gui.mwgui.helptext.1=Left click drag or arrow keys pan the map.
 mw.gui.mwgui.helptext.2=Mouse wheel or Page Up/Down zooms map.

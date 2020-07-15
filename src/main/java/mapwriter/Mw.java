@@ -155,6 +155,8 @@ public class Mw {
 	public Trail playerTrail = null;
 	
 	public static Mw instance;
+
+	public MwGui mwGui;
 	
 	public Mw(MwConfig config) {
 		// client only initialization
@@ -693,7 +695,8 @@ public class Mw {
 				
 			} else if (kb == MwKeyHandler.keyMapGui) {
 				// open map gui
-				this.mc.displayGuiScreen(new MwGui(this));
+				this.mwGui = new MwGui(this);
+				this.mc.displayGuiScreen(this.mwGui);
 			
 			} else if (kb == MwKeyHandler.keyNewMarker) {
 				// open new marker dialog

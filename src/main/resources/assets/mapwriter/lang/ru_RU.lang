@@ -14,6 +14,7 @@ mw.gui.mwgui.options=Настройки
 mw.gui.mwgui.dimension=измерение: %d
 mw.gui.mwgui.group=группа
 mw.gui.mwgui.overlay=наложение: %s
+mw.gui.mwgui.markers=Маркеры
 mw.gui.mwgui.keys=Клавиши
 mw.gui.mwgui.helptext.1=Для прокрутки карты используйте ЛКМ или стрелки.
 mw.gui.mwgui.helptext.2=Используйте колёсико мыши или клавиши Page Up/Down для приближения.
