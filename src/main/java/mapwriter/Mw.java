@@ -120,7 +120,8 @@ public class Mw {
 	public boolean ready = false;
 	public boolean multiplayer = false;
 	public int tickCounter = 0;
-	
+	public int lastSavedTick = 0;
+
 	// list of available dimensions
 	public List<Integer> dimensionList = new ArrayList<Integer>();
 	
@@ -555,8 +556,8 @@ public class Mw {
 			
 			this.playerTrail.close();
 			
-			this.markerManager.save(this.worldConfig, catMarkers);
-			this.markerManager.clear();
+//			this.markerManager.save(this.worldConfig, catMarkers);
+//			this.markerManager.clear();
 			
 			// close overlay
 			this.miniMap.close();
@@ -565,15 +566,27 @@ public class Mw {
 			this.undergroundMapTexture.close();
 			this.mapTexture.close();
 			
-			this.saveWorldConfig();
-			this.saveConfig();
+//			this.saveWorldConfig();
+//			this.saveConfig();
 			
 			this.tickCounter = 0;
 
             OverlaySlime.reset(); //Reset the state so the seed will be asked again when we log in
         }
 	}
-	
+
+	public void saveCfgAndMarkers() {
+		MwUtil.log("Saving markers and cfg...");
+
+		this.markerManager.save(this.worldConfig, catMarkers);
+		this.markerManager.clear();
+
+		this.saveWorldConfig();
+		this.saveConfig();
+
+		MwUtil.log("done");
+	}
+
 	////////////////////////////////
 	// Event handlers
 	////////////////////////////////
